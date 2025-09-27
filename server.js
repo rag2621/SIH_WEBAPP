@@ -11,7 +11,7 @@ require('dotenv').config();
 const apiRoutes = require('./routes/apiroutes');
 const { SensorData, Authority, Breakdown_data, DataHistory } = require('./modals/sensorModal');
 const { sendBreakdownAlerts } = require('./services/mail');
-const { sendBreakdownAlert } = require('./services/sms');
+
 
 // --- App & Server Configuration ---
 const app = express();
