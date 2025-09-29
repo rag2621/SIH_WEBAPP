@@ -144,12 +144,18 @@ router.get('/alerts', async (req, res) => {
         });
     }
 });
-
-router.get('/data/history/:nodeId', async(req,res)=>{
-
-    const d=await DataHistory.find({nodeId:req.params.nodeId}).sort({createdAt:-1}).limit(1);
-
-} 
-   
-)
+router.get('/data/histor/:nodeId', async (req, res) => {
+    try {
+        const d = await DataHistory.findOne({nodeId: "NODE-0001"});
+            
+        console.log("DATA",d);
+        // Send the response back to the client
+        res.json(d);
+        
+    } catch (error) {
+        console.error('Error fetching data history:', error);
+        res.status(500).json({ error: 'Failed to fetch data history' });
+    }
+});
 module.exports = router;
+
